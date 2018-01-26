@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:intl/intl.dart';
+
 class ThisPeriod extends StatefulWidget{
   @override
   State createState() {
@@ -8,12 +11,38 @@ class ThisPeriod extends StatefulWidget{
 
 class _ThisPeriod extends State<ThisPeriod> {
 
+  DateTime _time;
+  DateFormat formatter = new DateFormat.jm();
+
+  Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    _time = new DateTime.now();
+    const duration = const Duration(
+        seconds: 1
+    );
+    _timer = new Timer.periodic(duration, _updateTime);
+  }
+
+  @override
+  void dispose(){
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void _updateTime(Timer timer){
+    setState((){
+      _time = new DateTime.now();
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return new Card(
       child: new Container(
-        height: 200.0,
+        height: 150.0,
         child: new Column(
           children: <Widget>[
             new Expanded(
@@ -22,7 +51,7 @@ class _ThisPeriod extends State<ThisPeriod> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   new Text('AD'),
-                  new Text('11:45 AM'),
+                  new Text(formatter.format(_time)),
                   new Text('CB-512')
                 ],
               ),
