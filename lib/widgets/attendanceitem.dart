@@ -32,7 +32,7 @@ class _AttendanceItem extends State<AttendanceItem>{
                 children: <Widget>[
                   new Expanded(
                     flex: 1,
-                    child: new Text(subject.subjectCode),
+                    child: new Text(subject.subjectCode,style: new TextStyle(fontWeight: FontWeight.bold)),
                   ),
                   new Expanded(
                     flex: 2,
@@ -40,36 +40,45 @@ class _AttendanceItem extends State<AttendanceItem>{
                   )
                 ],
               ),
-            ),
+              ),
+           
             new Expanded(
               flex: 1,
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   new Text(subject.numberOfClassesAttended.toString()),
-                  new Text(subject.numberOfClasses.toString()),
+                  new Text(subject.numberOfClasses.toString(),style: new TextStyle(fontWeight: FontWeight.bold,fontSize:16.0),),
                 ],
               ),
             ),
             new Expanded(
               flex: 1,
+                child: new Container(
+                  padding: new EdgeInsets.all(20.0),
+                  decoration: new BoxDecoration(color: Colors.orangeAccent),
               child: new MaterialButton(
                 onPressed: () => registerAbsent(),
                 child: new Container(
-                  color: Colors.orangeAccent,
-                  child: new Text('A'),
+                  
+                  child: new Text('A', style: new TextStyle(fontSize: 24.0)),
                 ),
-              )
+                )  
+              ),
             ),
             new Expanded(
               flex: 1,
+                child: new Container(
+                  padding: new EdgeInsets.all(20.0),
+                  decoration: new BoxDecoration(color: Colors.greenAccent),
                 child: new MaterialButton(
                   onPressed: () => registerPresent(),
                   child: new Container(
-                    color: Colors.greenAccent,
-                    child: new Text('P'),
+                    
+                    child: new Text('P',style: new TextStyle(fontSize: 24.0)),
                   ),
                 )
+                ),
             ),
           ],
         ),
