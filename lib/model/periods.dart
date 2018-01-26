@@ -38,4 +38,20 @@ Map<int, Subject> periods = {
   40: Subjects.lCKTLab,
   41: Subjects.lCKTLab,
   42: Subjects.lCKTLab,
+  //
+  46: Subjects.free
 };
+
+int getMapNumber(DateTime time){
+  int dayNumber = time.weekday;
+
+  int minutesSinceMidnight = time.hour*60+time.minute;
+  int periodNumber;
+  if(minutesSinceMidnight >= 540 && minutesSinceMidnight <= 705/*11:45*/){
+    periodNumber = (minutesSinceMidnight-540/*9:00*/)~/55+1;
+  }else if(minutesSinceMidnight >= 745/*12:25*/ && minutesSinceMidnight <= 1075){
+    periodNumber = (minutesSinceMidnight-580/*9:00 + 40min break*/)~/55+1;
+  }
+
+  return periodNumber==null ? 46 : (dayNumber-1)*9+periodNumber;
+}
