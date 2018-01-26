@@ -47,8 +47,8 @@ class _AttendanceItem extends State<AttendanceItem>{
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Text(subject.numberOfClassesAttended.toString()),
-                  new Text(subject.numberOfClasses.toString(),style: new TextStyle(fontWeight: FontWeight.bold,fontSize:16.0),),
+                  new Text(subject.numberOfClassesAttended.toString(),style: new TextStyle(fontSize:16.0)),
+                  new Text(subject.numberOfClasses.toString(),style: new TextStyle(fontWeight: FontWeight.bold,fontSize:20.0),),
                 ],
               ),
             ),
@@ -56,26 +56,29 @@ class _AttendanceItem extends State<AttendanceItem>{
               flex: 1,
                 child: new Container(
                   padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(color: Colors.orangeAccent),
+                  decoration: new BoxDecoration(color: Colors.deepOrangeAccent[400]),
               child: new MaterialButton(
                 onPressed: () => registerAbsent(),
                 child: new Container(
                   
-                  child: new Text('A', style: new TextStyle(fontSize: 24.0)),
+                  child: new Text('A', style: new TextStyle(fontSize: 24.0,
+                        color: Colors.white),
                 ),
                 )  
               ),
+            ),
             ),
             new Expanded(
               flex: 1,
                 child: new Container(
                   padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(color: Colors.greenAccent),
+                  decoration: new BoxDecoration(color: Colors.greenAccent[700]),
                 child: new MaterialButton(
                   onPressed: () => registerPresent(),
                   child: new Container(
                     
-                    child: new Text('P',style: new TextStyle(fontSize: 24.0)),
+                    child: new Text('P',style: new TextStyle(fontSize: 24.0,
+                      color: Colors.white),),
                   ),
                 )
                 ),

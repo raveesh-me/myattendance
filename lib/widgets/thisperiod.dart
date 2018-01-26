@@ -42,6 +42,7 @@ class _ThisPeriod extends State<ThisPeriod> {
   Widget build(BuildContext context) {
     return new Card(
       child: new Container(
+        decoration: new BoxDecoration(color: Colors.grey[850]),
         height: 150.0,
         child: new Column(
           children: <Widget>[
@@ -50,15 +51,19 @@ class _ThisPeriod extends State<ThisPeriod> {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  new Text('AD'),
-                  new Text(formatter.format(_time)),
-                  new Text('CB-512')
+                  new Text('AD', style: new TextStyle(fontSize: 24.0,
+                        color: Colors.white),),
+                  new Text(formatter.format(_time), style: new TextStyle(fontSize: 24.0,
+                        color: Colors.white),),
+                  new Text('CB-512', style: new TextStyle(fontSize: 24.0,
+                        color: Colors.white),)
                 ],
               ),
             ),
             new Expanded(
               flex: 1,
-              child: new Text('Numerical Methods Lab'),
+              child: new Text('Numerical Methods Lab', style: new TextStyle(fontSize: 28.0,
+                        color: Colors.white),),
 
             ),
             new Expanded(
@@ -66,8 +71,10 @@ class _ThisPeriod extends State<ThisPeriod> {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Text('48/50'),
-                  new Text('96%')
+                  new Text('48/50', style: new TextStyle(fontSize: 24.0,
+                        color: Colors.white),),
+                  new Text('96%', style: new TextStyle(fontSize: 24.0,
+                        color: Colors.white),)
                 ],
               ),
 
