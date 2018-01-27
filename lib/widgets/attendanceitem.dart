@@ -24,7 +24,8 @@ class _AttendanceItem extends State<AttendanceItem> {
   Widget build(BuildContext context) {
     return new Card(
       child: new Container(
-        height: 60.0,
+        height: 80.0,
+        color: Colors.grey[600],
         child: new Row(
           children: <Widget>[
             new Expanded(
@@ -34,11 +35,17 @@ class _AttendanceItem extends State<AttendanceItem> {
                   new Expanded(
                     flex: 1,
                     child: new Text(subject.subjectCode,
-                        style: new TextStyle(fontWeight: FontWeight.bold)),
+                        style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.white,
+                        fontSize: 16.0)),
                   ),
                   new Expanded(
-                    flex: 2,
-                    child: new Text(subject.subjectName),
+                    flex: 3,
+                    child: new Text(subject.subjectName,
+                      textAlign: TextAlign.left,
+                      style: new TextStyle(fontSize: 16.0, color: Colors.white,wordSpacing: 4.0),
+                       overflow: TextOverflow.ellipsis,
+                            maxLines:3,
+                            ),
                   )
                 ],
               ),
@@ -48,11 +55,14 @@ class _AttendanceItem extends State<AttendanceItem> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Text(subject.numberOfClassesAttended.toString()),
+                  new Text(subject.numberOfClassesAttended.toString(),
+                          style: new TextStyle(color: Colors.white,
+                          fontSize: 16.0),),
                   new Text(
                     subject.numberOfClasses.toString(),
                     style: new TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 16.0),
+                        fontWeight: FontWeight.bold, fontSize: 20.0
+                        ,color: Colors.white),
                   ),
                 ],
               ),
@@ -61,12 +71,15 @@ class _AttendanceItem extends State<AttendanceItem> {
               flex: 1,
               child: new Container(
                   padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(color: Colors.orangeAccent),
+                  decoration: new BoxDecoration(color: Colors.orangeAccent,
+                   borderRadius: new BorderRadius.all(
+          const Radius.circular(12.0),
+        ), ),
                   child: new MaterialButton(
                     onPressed: () => registerAbsent(),
                     child: new Container(
                       child:
-                          new Text('A', style: new TextStyle(fontSize: 24.0)),
+                          new Text('A', style: new TextStyle(fontSize: 24.0,color: Colors.white)),
                     ),
                   )),
             ),
@@ -74,12 +87,15 @@ class _AttendanceItem extends State<AttendanceItem> {
               flex: 1,
               child: new Container(
                   padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(color: Colors.greenAccent),
+                  decoration: new BoxDecoration(color: Colors.greenAccent,
+                   borderRadius: new BorderRadius.all(
+                                  const Radius.circular(12.0),
+                                ), ),
                   child: new MaterialButton(
                     onPressed: () => registerPresent(),
                     child: new Container(
                       child:
-                          new Text('P', style: new TextStyle(fontSize: 24.0)),
+                          new Text('P', style: new TextStyle(fontSize: 24.0,color: Colors.white)),
                     ),
                   )),
             ),

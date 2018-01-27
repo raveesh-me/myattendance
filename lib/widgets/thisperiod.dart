@@ -44,6 +44,7 @@ class _ThisPeriod extends State<ThisPeriod> {
     return new Card(
       child: new Container(
         height: 150.0,
+        decoration: new BoxDecoration(color: Colors.black),
         child: new Column(
           children: <Widget>[
             new Expanded(
@@ -51,15 +52,15 @@ class _ThisPeriod extends State<ThisPeriod> {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  new Text(_subject.subjectTeacher),
-                  new Text(_formatter.format(_time)),
-                  new Text(_subject.subjectRoom)
+                  new Text(_subject.subjectTeacher,style: new TextStyle( color: Colors.white),),
+                  new Text(_formatter.format(_time),style: new TextStyle( color: Colors.white),),
+                  new Text(_subject.subjectRoom,style: new TextStyle( color: Colors.white),),
                 ],
               ),
             ),
             new Expanded(
               flex: 1,
-              child: new Text(_subject.subjectName),
+              child: new Text(_subject.subjectName,style: new TextStyle( color: Colors.white),),
             ),
             new Expanded(
               flex: 1,
@@ -67,9 +68,9 @@ class _ThisPeriod extends State<ThisPeriod> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   new Text(
-                     '${_subject.numberOfClassesAttended}/${_subject.numberOfClasses}'),
+                     '${_subject.numberOfClassesAttended}/${_subject.numberOfClasses}',style: new TextStyle( color: Colors.white),),
                   new Text(
-                     '${_subject.numberOfClassesAttended/_subject.numberOfClasses}%')
+                     '${_subject.numberOfClassesAttended/_subject.numberOfClasses}%',style: new TextStyle( color: Colors.white),)
                 ],
               ),
             ),
