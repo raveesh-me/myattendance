@@ -11,6 +11,8 @@ dependencies:
 
   intl: "^0.15.2"
 
+  shared_preferences: "0.2.5"
+
 
 dev_dependencies:
   flutter_test:

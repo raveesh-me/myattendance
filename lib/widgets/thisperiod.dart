@@ -13,15 +13,16 @@ class ThisPeriod extends StatefulWidget {
 
 class _ThisPeriod extends State<ThisPeriod> {
   Timer _timer;
-  static DateTime _time;
+  DateTime _time;
+  Subject _subject;
   DateFormat _formatter = new DateFormat.jm();
-  Subject _subject = periods[getMapNumber(_time)];
 
   @override
   void initState() {
     super.initState();
     _time = new DateTime.now();
-    const duration = const Duration(seconds: 1);
+    _subject = periods[getMapNumber(_time)];
+    const duration = const Duration(minutes: 1);
     _timer = new Timer.periodic(duration, _updateTime);
   }
 
@@ -34,6 +35,7 @@ class _ThisPeriod extends State<ThisPeriod> {
   void _updateTime(Timer timer) {
     setState(() {
       _time = new DateTime.now();
+      _subject = periods[getMapNumber(_time)];
     });
   }
 

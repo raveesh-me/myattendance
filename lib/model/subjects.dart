@@ -1,23 +1,49 @@
-class Subject {
+import 'package:shared_preferences/shared_preferences.dart';
 
+class Subject {
   String subjectCode;
   String subjectName;
   String subjectTeacher;
   String subjectRoom;
-  int _numberOfClasses = 0;
-  int _numberOFClassesAttended = 0;
+  SharedPreferences _prefs;
 
-  int get numberOfClassesAttended => _numberOFClassesAttended;
+  int _numberOfClasses;
+  int _numberOfClassesAttended;
+
+  int get numberOfClassesAttended => _numberOfClassesAttended;
   int get numberOfClasses => _numberOfClasses;
-  Subject(this.subjectCode, this.subjectName, this.subjectTeacher, this.subjectRoom);
+
+  _setSavedData() async {
+    _prefs = await SharedPreferences.getInstance();
+    _prefs.setInt('${subjectCode}_noc', _numberOfClasses);
+    _prefs.setInt('${subjectCode}_noca', _numberOfClassesAttended);
+  }
+
+  _initSP() async {
+    _prefs = await SharedPreferences.getInstance();
+    if (_prefs.getInt('${subjectCode}_noc') == null) {
+      _prefs.setInt('${subjectCode}_noc', 0);
+      _prefs.setInt('${subjectCode}_noca', 0);
+    }
+
+    _numberOfClassesAttended = _prefs.getInt('${subjectCode}_noca');
+    _numberOfClasses = _prefs.getInt('${subjectCode}_noc');
+  }
+
+  Subject(this.subjectCode, this.subjectName, this.subjectTeacher,
+      this.subjectRoom) {
+    _initSP();
+  }
 
   void registerPresent() {
     _numberOfClasses++;
-    _numberOFClassesAttended++;
+    _numberOfClassesAttended++;
+    _setSavedData();
   }
 
   void registerAbsent() {
     _numberOfClasses++;
+    _setSavedData();
   }
 }
 
