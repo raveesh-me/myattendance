@@ -19,20 +19,15 @@ class Subject {
     _prefs.setInt('${subjectCode}_noca', _numberOfClassesAttended);
   }
 
-  _initSP() async {
+  _getSavedData() async {
     _prefs = await SharedPreferences.getInstance();
-    if (_prefs.getInt('${subjectCode}_noc') == null) {
-      _prefs.setInt('${subjectCode}_noc', 0);
-      _prefs.setInt('${subjectCode}_noca', 0);
-    }
-
-    _numberOfClassesAttended = _prefs.getInt('${subjectCode}_noca');
-    _numberOfClasses = _prefs.getInt('${subjectCode}_noc');
+    _numberOfClasses = _prefs.getInt('${subjectCode}_noc') ?? 0;
+    _numberOfClassesAttended = _prefs.getInt('${subjectCode}_noca') ?? 0;
   }
 
   Subject(this.subjectCode, this.subjectName, this.subjectTeacher,
       this.subjectRoom) {
-    _initSP();
+    _getSavedData();
   }
 
   void registerPresent() {

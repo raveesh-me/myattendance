@@ -1,43 +1,14 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:myattendance/model/subjects.dart';
-import 'package:myattendance/model/periods.dart';
 
-class ThisPeriod extends StatefulWidget {
-  @override
-  State createState() {
-    return new _ThisPeriod();
-  }
-}
+class ThisPeriod extends StatelessWidget {
+  final Subject _subject;
+  final DateTime _time;
+  final DateFormat _formatter = new DateFormat.jm();
 
-class _ThisPeriod extends State<ThisPeriod> {
-  Timer _timer;
-  DateTime _time;
-  Subject _subject;
-  DateFormat _formatter = new DateFormat.jm();
 
-  @override
-  void initState() {
-    super.initState();
-    _time = new DateTime.now();
-    _subject = periods[getMapNumber(_time)];
-    const duration = const Duration(seconds: 1);
-    _timer = new Timer.periodic(duration, _updateTime);
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void _updateTime(Timer timer) {
-    setState(() {
-      _time = new DateTime.now();
-      _subject = periods[getMapNumber(_time)];
-    });
-  }
+  ThisPeriod(this._subject, this._time);
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +23,27 @@ class _ThisPeriod extends State<ThisPeriod> {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  new Text(_subject.subjectTeacher,style: new TextStyle( color: Colors.white),),
-                  new Text(_formatter.format(_time),style: new TextStyle( color: Colors.white),),
-                  new Text(_subject.subjectRoom,style: new TextStyle( color: Colors.white),),
+                  new Text(
+                    _subject.subjectTeacher,
+                    style: new TextStyle(color: Colors.white),
+                  ),
+                  new Text(
+                    _formatter.format(_time),
+                    style: new TextStyle(color: Colors.white),
+                  ),
+                  new Text(
+                    _subject.subjectRoom,
+                    style: new TextStyle(color: Colors.white),
+                  ),
                 ],
               ),
             ),
             new Expanded(
               flex: 1,
-              child: new Text(_subject.subjectName,style: new TextStyle( color: Colors.white),),
+              child: new Text(
+                _subject.subjectName,
+                style: new TextStyle(color: Colors.white),
+              ),
             ),
             new Expanded(
               flex: 1,
@@ -68,9 +51,17 @@ class _ThisPeriod extends State<ThisPeriod> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   new Text(
-                     '${_subject.numberOfClassesAttended}/${_subject.numberOfClasses}',style: new TextStyle( color: Colors.white),),
+                    _subject.numberOfClasses == null
+                        ? '..'
+                        : '${_subject.numberOfClassesAttended}/${_subject
+                        .numberOfClasses}',
+                    style: new TextStyle(color: Colors.white),
+                  ),
                   new Text(
-                     '${_subject.numberOfClassesAttended/_subject.numberOfClasses}%',style: new TextStyle( color: Colors.white),)
+                    '${_subject.numberOfClassesAttended /
+                        _subject.numberOfClasses}%',
+                    style: new TextStyle(color: Colors.white),
+                  )
                 ],
               ),
             ),
@@ -80,3 +71,4 @@ class _ThisPeriod extends State<ThisPeriod> {
     );
   }
 }
+
