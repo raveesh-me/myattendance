@@ -22,7 +22,7 @@ class _ThisPeriod extends State<ThisPeriod> {
     super.initState();
     _time = new DateTime.now();
     _subject = periods[getMapNumber(_time)];
-    const duration = const Duration(minutes: 1);
+    const duration = const Duration(seconds: 1);
     _timer = new Timer.periodic(duration, _updateTime);
   }
 
