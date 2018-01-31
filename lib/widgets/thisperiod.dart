@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:myattendance/model/subjects.dart';
+import 'colors.dart';
 
 class ThisPeriod extends StatelessWidget {
   final Subject _subject;
@@ -15,7 +16,7 @@ class ThisPeriod extends StatelessWidget {
     return new Card(
       child: new Container(
         height: 150.0,
-        decoration: new BoxDecoration(color: Colors.black),
+        decoration: new BoxDecoration(color:bigCardBackground2 ),
         child: new Column(
           children: <Widget>[
             new Expanded(
@@ -25,15 +26,15 @@ class ThisPeriod extends StatelessWidget {
                 children: <Widget>[
                   new Text(
                     _subject.subjectTeacher,
-                    style: new TextStyle(color: Colors.white),
+                    style: new TextStyle(color: bigCardSmallText,fontSize: 22.0),
                   ),
                   new Text(
                     _formatter.format(_time),
-                    style: new TextStyle(color: Colors.white),
+                    style: new TextStyle(color: bigCardSmallText,fontSize: 32.0),
                   ),
                   new Text(
                     _subject.subjectRoom,
-                    style: new TextStyle(color: Colors.white),
+                    style: new TextStyle(color: bigCardSmallText,fontSize: 20.0),
                   ),
                 ],
               ),
@@ -42,7 +43,7 @@ class ThisPeriod extends StatelessWidget {
               flex: 1,
               child: new Text(
                 _subject.subjectName,
-                style: new TextStyle(color: Colors.white),
+                style: new TextStyle(color:  bigCardSmallText),
               ),
             ),
             new Expanded(
@@ -55,12 +56,12 @@ class ThisPeriod extends StatelessWidget {
                         ? '..'
                         : '${_subject.numberOfClassesAttended}/${_subject
                         .numberOfClasses}',
-                    style: new TextStyle(color: Colors.white),
+                    style: new TextStyle(color:  bigCardSmallText,fontSize: 20.0),
                   ),
                   new Text(
-                    '${_subject.numberOfClassesAttended /
-                        _subject.numberOfClasses}%',
-                    style: new TextStyle(color: Colors.white),
+                    '${(_subject.numberOfClassesAttended /
+                        _subject.numberOfClasses)*100}%',
+                    style: new TextStyle(color: bigCardSmallText,fontSize: 20.0),
                   )
                 ],
               ),

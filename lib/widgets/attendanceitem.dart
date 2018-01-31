@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myattendance/model/subjects.dart';
+import 'colors.dart';
 
 class AttendanceItem extends StatefulWidget {
   final Subject subject;
@@ -24,8 +25,8 @@ class _AttendanceItem extends State<AttendanceItem> {
   Widget build(BuildContext context) {
     return new Card(
       child: new Container(
-        height: 80.0,
-        color: Colors.grey[600],
+        height: 90.0,
+        color: smallCardBackgroundColor,
         child: new Row(
           children: <Widget>[
             new Expanded(
@@ -34,15 +35,16 @@ class _AttendanceItem extends State<AttendanceItem> {
                 children: <Widget>[
                   new Expanded(
                     flex: 1,
-                    child: new Text(subject.subjectCode,
-                        style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.white,
+                    child:
+                     new Text(subject.subjectCode,
+                        style: new TextStyle(fontWeight: FontWeight.bold,color: smallCardSmallText,
                         fontSize: 16.0)),
                   ),
                   new Expanded(
                     flex: 3,
                     child: new Text(subject.subjectName,
                       textAlign: TextAlign.left,
-                      style: new TextStyle(fontSize: 16.0, color: Colors.white,wordSpacing: 4.0),
+                      style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0, color: smallCardSmallText,wordSpacing: 4.0),
                        overflow: TextOverflow.ellipsis,
                             maxLines:3,
                             ),
@@ -56,13 +58,13 @@ class _AttendanceItem extends State<AttendanceItem> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   new Text(subject.numberOfClassesAttended.toString(),
-                          style: new TextStyle(color: Colors.white,
-                          fontSize: 16.0),),
+                          style: new TextStyle(color: smallCardSmallText,
+                          fontSize: 18.0),),
                   new Text(
                     subject.numberOfClasses.toString(),
                     style: new TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 20.0
-                        ,color: Colors.white),
+                        ,color: smallCardSmallText),
                   ),
                 ],
               ),
@@ -70,16 +72,17 @@ class _AttendanceItem extends State<AttendanceItem> {
             new Expanded(
               flex: 1,
               child: new Container(
-                  padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(color: Colors.orangeAccent,
+                  
+                  padding: new EdgeInsets.fromLTRB(20.0, 20.0,30.0, 20.0),
+                  decoration: new BoxDecoration(color: themeAccentColor,
                    borderRadius: new BorderRadius.all(
-          const Radius.circular(12.0),
+                        const Radius.circular(30.0),
         ), ),
                   child: new MaterialButton(
                     onPressed: () => registerAbsent(),
                     child: new Container(
                       child:
-                          new Text('A', style: new TextStyle(fontSize: 24.0,color: Colors.white)),
+                          new Text('A', style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 24.0,color:bigCardSmallText)),
                     ),
                   )),
             ),
@@ -87,15 +90,15 @@ class _AttendanceItem extends State<AttendanceItem> {
               flex: 1,
               child: new Container(
                   padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(color: Colors.greenAccent,
+                  decoration: new BoxDecoration(color: presentBackgroundColor ,
                    borderRadius: new BorderRadius.all(
-                                  const Radius.circular(12.0),
+                                  const Radius.circular(30.0),
                                 ), ),
                   child: new MaterialButton(
                     onPressed: () => registerPresent(),
                     child: new Container(
                       child:
-                          new Text('P', style: new TextStyle(fontSize: 24.0,color: Colors.white)),
+                          new Text('P', style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 24.0,color:bigCardSmallText)),
                     ),
                   )),
             ),
