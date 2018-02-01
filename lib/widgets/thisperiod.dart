@@ -7,7 +7,7 @@ class ThisPeriod extends StatelessWidget {
   final Subject _subject;
   final DateTime _time;
   final DateFormat _formatter = new DateFormat.jm();
-  final NumberFormat _nformatter = new NumberFormat.percentPattern();
+  final NumberFormat _percentformatter = new NumberFormat.percentPattern();
 
   ThisPeriod(this._subject, this._time);
 
@@ -61,7 +61,7 @@ class ThisPeriod extends StatelessWidget {
                         new TextStyle(color: bigCardSmallText, fontSize: 20.0),
                   ),
                   new Text(
-                    _nformatter.format((_subject.numberOfClassesAttended /
+                    _percentformatter.format((_subject.numberOfClassesAttended /
                         _subject.numberOfClasses)),
                     style:
                         new TextStyle(color: bigCardSmallText, fontSize: 20.0),

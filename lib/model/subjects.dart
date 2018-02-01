@@ -65,7 +65,7 @@ class Subjects {
       new Subject('ECEN3221', 'Electronics Circuit Design Lab', 'KD', 'CB-512');
   static Subject lOOPLab =
       new Subject('CSEN3014', 'OOPs Laboratory', 'KD', 'CB-512');
-  static Subject free = new Subject('', 'No classes right now', '', '');
+  static Subject free = new Subject('CSEN3204', 'No classes right now', 'KD', 'CB-512');
 
   static List<Subject> subjects = <Subject>[
     tVLSI,
