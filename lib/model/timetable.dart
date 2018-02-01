@@ -1,6 +1,6 @@
 import 'subjects.dart';
 
-Map<int, Subject> periods = {
+Map<int, Subject> table = {
   //Monday
   1: Subjects.lDSPLab,
   2: Subjects.lDSPLab,

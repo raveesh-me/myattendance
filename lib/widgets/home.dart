@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'attendancelist.dart';
 import 'thisperiod.dart';
-import 'package:myattendance/model/periods.dart';
+import 'package:myattendance/model/timetable.dart';
 import 'package:myattendance/model/subjects.dart';
 import 'dart:async';
 
@@ -25,7 +25,7 @@ class _HomeScreen extends State<HomeScreen> {
   void initState() {
     super.initState();
     _time = new DateTime.now();
-    _subject = periods[getMapNumber(_time)];
+    _subject = table[getMapNumber(_time)];
     const duration = const Duration(seconds: 1);
     _timer = new Timer.periodic(duration, _updateTime);
   }
@@ -39,7 +39,7 @@ class _HomeScreen extends State<HomeScreen> {
   void _updateTime(Timer timer) {
     setState(() {
       _time = new DateTime.now();
-      _subject = periods[getMapNumber(_time)];
+      _subject = table[getMapNumber(_time)];
     });
   }
 
