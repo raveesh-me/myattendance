@@ -16,7 +16,7 @@ class ThisPeriod extends StatelessWidget {
     return new Card(
       child: new Container(
         height: 150.0,
-        decoration: new BoxDecoration(color: bigCardBackground2),
+        decoration: new BoxDecoration(color: bigCardBackground),
         child: new Column(
           children: <Widget>[
             new Expanded(

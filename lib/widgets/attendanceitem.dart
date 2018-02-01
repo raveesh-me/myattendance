@@ -25,13 +25,14 @@ class _AttendanceItem extends State<AttendanceItem> {
   Widget build(BuildContext context) {
     return new Card(
       child: new Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         height: 90.0,
         color: smallCardBackgroundColor,
         child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             new Expanded(
-              flex: 2,
+              flex: 14,
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -43,80 +44,80 @@ class _AttendanceItem extends State<AttendanceItem> {
                           fontSize: 16.0)),
                   new Text(
                     subject.subjectName,
-                    textAlign: TextAlign.left,
                     style: new TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 16.0,
-                        color: smallCardSmallText,
-                        wordSpacing: 4.0),
-                    overflow: TextOverflow.ellipsis,
+                      fontSize: 16.0,
+                      color: smallCardSmallText,
+                    ),
+                    overflow: TextOverflow.fade,
                     maxLines: 2,
                   ),
                 ],
               ),
             ),
             new Expanded(
-              flex: 1,
-              child: new Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  new Text(
-                    '${subject.numberOfClassesAttended}',
-                    style: new TextStyle(
-                        color: smallCardSmallText, fontSize: 18.0),
-                  ),
-                  new Text(
-                    '${subject.numberOfClasses}',
-                    style: new TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: smallCardSmallText),
-                  ),
-                ],
+              flex: 6,
+              child: new Container(
+                color: Colors.white,
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new Text(
+                      '${subject.numberOfClassesAttended}',
+                      style: new TextStyle(
+                          color: smallCardSmallText, fontSize: 18.0),
+                    ),
+                    new Text('---'),
+                    new Text(
+                      '${subject.numberOfClasses}',
+                      style: new TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: smallCardSmallText),
+                    ),
+                  ],
+                ),
               ),
             ),
             new Expanded(
-              flex: 1,
+              flex: 7,
               child: new Container(
-                  padding: new EdgeInsets.fromLTRB(20.0, 20.0, 30.0, 20.0),
-                  decoration: new BoxDecoration(
-                    color: themeAccentColor,
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(30.0),
+                    decoration: new ShapeDecoration(
+                      shape: new CircleBorder(),
+                      color: absentButtonColor,
+                    ),
+                    child: new MaterialButton(
+                      onPressed: () {
+                        registerAbsent();
+                      },
+                      child: new Text('A',
+                      style: new TextStyle(
+                        fontSize: 50.0,
+                        color: Colors.white
+                      ),
+                      ),
                     ),
                   ),
-                  child: new MaterialButton(
-                    onPressed: () => registerAbsent(),
-                    child: new Container(
-                      child: new Text('A',
-                          style: new TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24.0,
-                              color: bigCardSmallText)),
-                    ),
-                  )),
             ),
             new Expanded(
-              flex: 1,
+              flex: 7,
               child: new Container(
-                  padding: new EdgeInsets.all(20.0),
-                  decoration: new BoxDecoration(
-                    color: presentBackgroundColor,
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(30.0),
+                decoration: new ShapeDecoration(
+                  shape: new CircleBorder(),
+                  color: presentButtonColor,
+                ),
+                child: new MaterialButton(
+                  onPressed: () {
+                    registerPresent();
+                  },
+                  child: new Text('P',
+                    style: new TextStyle(
+                        fontSize: 50.0,
+                      color: Colors.white
                     ),
                   ),
-                  child: new MaterialButton(
-                    onPressed: () => registerPresent(),
-                    child: new Container(
-                      child: new Text('P',
-                          style: new TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24.0,
-                              color: bigCardSmallText)),
-                    ),
-                  )),
-            ),
+                ),
+              ),
+            )
           ],
         ),
       ),

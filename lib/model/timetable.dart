@@ -43,15 +43,20 @@ Map<int, Subject> table = {
 };
 
 int getMapNumber(DateTime time){
+
+  //TODO: Make a test for this function
   int dayNumber = time.weekday;
 
   int minutesSinceMidnight = time.hour*60+time.minute;
   int periodNumber;
+  int mapNumber;
   if(minutesSinceMidnight >= 540 && minutesSinceMidnight <= 705/*11:45*/){
     periodNumber = (minutesSinceMidnight-540/*9:00*/)~/55+1;
+    mapNumber = (dayNumber-1)*9 + periodNumber;
   }else if(minutesSinceMidnight >= 745/*12:25*/ && minutesSinceMidnight <= 1075){
     periodNumber = (minutesSinceMidnight-580/*9:00 + 40min break*/)~/55+1;
+    mapNumber = (dayNumber-1)*9 + periodNumber;
   }
 
-  return periodNumber==null ? 46 : (dayNumber-1)*9+periodNumber;
+  return mapNumber ?? 46;
 }

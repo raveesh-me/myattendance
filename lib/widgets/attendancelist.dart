@@ -14,7 +14,6 @@ class AttendanceList extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-
     return new Center(
       child: new ListView(
         children: counterList(),
