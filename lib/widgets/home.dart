@@ -25,7 +25,7 @@ class _HomeScreen extends State<HomeScreen> {
   void initState() {
     super.initState();
     _time = new DateTime.now();
-    _subject = table[getMapNumber(_time)];
+    _subject = table[getMapNumber(_time)] ?? table[46];
     const duration = const Duration(seconds: 1);
     _timer = new Timer.periodic(duration, _updateTime);
   }
@@ -39,7 +39,7 @@ class _HomeScreen extends State<HomeScreen> {
   void _updateTime(Timer timer) {
     setState(() {
       _time = new DateTime.now();
-      _subject = table[getMapNumber(_time)];
+      _subject = table[getMapNumber(_time)] ?? table[46];
     });
   }
 
