@@ -7,7 +7,7 @@ class ThisPeriod extends StatelessWidget {
   final Subject _subject;
   final DateTime _time;
   final DateFormat _formatter = new DateFormat.jm();
-  final NumberFormat _percentformatter = new NumberFormat.percentPattern();
+  final NumberFormat _percentFormatter = new NumberFormat.percentPattern();
 
   ThisPeriod(this._subject, this._time);
 
@@ -16,32 +16,50 @@ class ThisPeriod extends StatelessWidget {
     return new Card(
       child: new Container(
         height: 150.0,
-        decoration: new BoxDecoration(color: bigCardBackground),
+        color: bigCardBackground,
         child: new Column(
           children: <Widget>[
-            new Expanded(
-              flex: 2,
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  new Text(
-                    _subject.subjectTeacher,
-                    style:
-                        new TextStyle(color: bigCardSmallText, fontSize: 22.0),
-                  ),
-                  new Text(
-                    _formatter.format(_time),
-                    style:
-                        new TextStyle(color: bigCardSmallText, fontSize: 32.0),
-                  ),
-                  new Text(
-                    _subject.subjectRoom,
-                    style:
-                        new TextStyle(color: bigCardSmallText, fontSize: 20.0),
-                  ),
-                ],
+              new Container(
+                margin: const EdgeInsets.only(bottom: 8.0),
+                child: new Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    new Expanded(
+                      flex: 1,
+                      child: new Text(
+                        _subject.subjectTeacher,
+                        style: new TextStyle(
+                            color: bigCardSmallText, fontSize: 20.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    new Expanded(
+                      flex: 2,
+                      child: new Container(
+                        padding: const EdgeInsets.all(10.0),
+                        color: Colors.white,
+                        child: new Text(
+                          _formatter.format(_time),
+                          style: new TextStyle(
+                              color: bigCardBigText,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 32.0),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    new Expanded(
+                      flex: 1,
+                      child: new Text(
+                        _subject.subjectRoom,
+                        style: new TextStyle(
+                            color: bigCardSmallText, fontSize: 20.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
             new Expanded(
               flex: 1,
               child: new Text(
@@ -61,7 +79,7 @@ class ThisPeriod extends StatelessWidget {
                         new TextStyle(color: bigCardSmallText, fontSize: 20.0),
                   ),
                   new Text(
-                    _percentformatter.format((_subject.numberOfClassesAttended /
+                    _percentFormatter.format((_subject.numberOfClassesAttended /
                         _subject.numberOfClasses)),
                     style:
                         new TextStyle(color: bigCardSmallText, fontSize: 20.0),
